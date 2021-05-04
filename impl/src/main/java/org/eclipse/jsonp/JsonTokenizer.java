@@ -512,7 +512,8 @@ final class JsonTokenizer implements Closeable {
     }
     
     CharSequence getChars() {
-      return CharBuffer.wrap(buf, storeBegin, storeEnd-storeBegin);
+      int len = storeEnd - storeBegin;
+      return new StringBuilder(len).append(buf, storeBegin, len);
     }
 
     BigDecimal getBigDecimal() {
